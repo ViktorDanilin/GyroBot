@@ -24,9 +24,9 @@
 #define ANGLE_BALANCE_MAX 5
 
 
-#define KP 1.4
-#define KI 0.04        
-#define KD 0.03
+#define KP 1.55
+#define KI 0.03        
+#define KD 0.01
 
 
 MPU6050 accgyro; 
@@ -103,7 +103,7 @@ void setSpeedMotors(int _speed){
   } 
 }
 void setSpeedMotorLeft(int _speed) {
-  int speedNorm = constrain(abs(_speed), 0, MOTOR_MAX);
+  int speedNorm = constrain(abs(_speed), MOTOR_MIN, MOTOR_MAX);
   if (_speed > 0){
     digitalWrite(DIR_2, LOW);
     analogWrite(SPEED_2, speedNorm);
@@ -113,7 +113,7 @@ void setSpeedMotorLeft(int _speed) {
   }
 }
 void setSpeedMotorRight(int _speed) {
-  int speedNorm = constrain(abs(_speed), 0, MOTOR_MAX);
+  int speedNorm = constrain(abs(_speed), MOTOR_MIN, MOTOR_MAX);
     if (_speed > 0){
     digitalWrite(DIR_1, LOW);
     analogWrite(SPEED_1, speedNorm);
